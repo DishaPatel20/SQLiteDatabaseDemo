@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:background="#0C0C0C"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context=".SplashScreen">
+
+    <ImageView
+        android:id="@+id/imgView"
+        android:layout_width="300dp"
+        android:layout_height="150dp"
+        android:src="@drawable/logo" />
+
+    <TextView
+        android:id="@+id/textview1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:fontFamily="cursive"
+        android:shadowColor="#075273"
+        android:text="Disha Patel"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textColorHighlight="#00BCD4"
+        android:textDirection="firstStrong"
+        android:textSize="60dp"
+        android:textStyle="bold|italic" />
+
+    <TextView
+        android:id="@+id/textview2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:fontFamily="cursive"
+        android:shadowColor="#075273"
+        android:text="From R.K University"
+        android:textAlignment="center"
+        android:textColor="#C1FFFFFF"
+        android:textColorHighlight="#00BCD4"
+        android:textDirection="firstStrong"
+        android:textSize="24sp"
+        android:textStyle="bold|italic" />
+
+</LinearLayout>

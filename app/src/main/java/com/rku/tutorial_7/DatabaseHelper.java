@@ -1,0 +1,55 @@
+package com.rku.tutorial_7;
+
+import android.content.ContentValues;
+import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
+
+import androidx.annotation.Nullable;
+
+public class DatabaseHelper extends SQLiteOpenHelper {
+    public static final String DATABASE = "student";
+    public static final String TABLE = "student_data";
+    public static final String col_1 = "id";
+    public static final String col_2 = "enrollno";
+    public static final String col_3 = "firstname";
+    public static final String col_4 = "lastname";
+    public static final String col_5 = "email";
+
+    public DatabaseHelper(@Nullable Context context) {
+        super(context, DATABASE, null, 1);
+    }
+
+    @Override
+    public void onCreate(SQLiteDatabase db) {
+        db.execSQL("CREATE TABLE "+TABLE+"(Id INTEGER PRIMARY KEY AUTOINCREMENT,EnrollNo TEXT,FirstName TEXT,LastName TEXT,Email TEXT)");
+    }
+
+    @Override
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        db.execSQL("DROP TABLE IF EXISTS "+TABLE);
+        onCreate(db);
+    }
+
+    public boolean insertData(String enrollno, String fname, String lname){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(col_2,enrollno);
+        contentValues.put(col_3,fname);
+        contentValues.put(col_4,lname);
+        contentValues.put(col_5,fname.trim().toLowerCase()+"."+lname.trim().toLowerCase()+"@rku.ac.in");
+        long result = db.insert(TABLE,null,contentValues);
+        if(result == -1)
+            return false;
+        else
+            return true;
+    }
+
+    public Cursor getAllData(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor res = db.rawQuery("Select * from "+TABLE,null);
+        return res;
+    }
+}
